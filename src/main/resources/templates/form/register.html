@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css}"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+        rel="stylesheet"
+  />
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+        href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+        rel="stylesheet"
+  />
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/icon" href="../../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+  <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+  <link rel="stylesheet" type="text/css" media="all" href="../../static/css/login.css" th:href="@{/css/login.css}"/>
+</head>
+<body>
+
+<section th:insert="~{navigation.html :: nav}"></section>
+
+<div class="container">
+  <form class="form" id="registerForm" th:object="${user}" th:action="@{/register}" method = "post">
+    <h2>Регистрация</h2>
+    <div class="input-small">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{username}" class="in" th:type="text" th:id="regUsername" th:name="regUsername"
+               th:required="required" placeholder="Потребителско име">
+      </label>
+    </div>
+    <div class="input-small">
+      <i class="fa fa-edit" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{firstName}" class="in" th:type="text" th:id="regFirstName" th:name="regFirstName"
+                th:required="required" placeholder="Първо име">
+      </label>
+    </div>
+    <div class="input-small">
+      <i class="fa fa-edit" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{lastName}" class="in" th:type="text" th:id="regLastName" th:name="regLastName"
+                th:required="required" placeholder="Фамилия">
+      </label>
+    </div>
+    <div class="input-small">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{email}" class="in" th:type="email" th:id="regEmail"  th:name="regEmail"
+                th:required="required" placeholder="Имейл">
+      </label>
+    </div>
+    <div class="input-small">
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{message}" class="in" th:type="text" th:id="message" th:name="message"
+               th:required="required" placeholder="Съобщение">
+      </label>
+    </div>
+    <div class="input-small">
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <label>
+        <input th:field="*{password}" class="in" th:type="password" th:id="regPassword" th:name="regPassword"
+               th:required="required" placeholder="Парола">
+      </label>
+    </div>
+    <p class="reg">Вече сте регистрарани?
+      <a class="link-option" href="login.html" th:href="@{/login}">ВХОД</a>
+    </p>
+    <div class="button-group">
+      <button class="button-link" th:type="submit">РЕГИСТРАЦИЯ</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
+

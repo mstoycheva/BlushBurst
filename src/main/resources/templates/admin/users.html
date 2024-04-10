@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!--    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"-->
+<!--          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"-->
+<!--          rel="stylesheet"-->
+<!--    />-->
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/icon" href="../../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/table.css" th:href="@{/css/table.css}"/>
+    <script src="/js/logic.js" th:src="@{/js/logic.js}" defer></script>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<div class="container">
+    <h2>Регистрирани потребители</h2>
+    <button class="act opt center"><a class="no-dec" th:href="@{users/create-user}" href="create-user.html">ДОБАВЯНЕ</a></button>
+    <table>
+        <thead>
+        <tr>
+            <th>Потребителско име</th>
+            <th>Име</th>
+            <th>Фамилия</th>
+            <th>Имейл</th>
+            <th>Съобщение</th>
+            <th>Админ</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "user : ${users}">
+            <td th:text="${user.getUsername()}"></td>
+            <td th:text = "${user.getFirstName()}"></td>
+            <td th:text = "${user.getLastName()}"></td>
+            <td th:text = "${user.getEmail()}"></td>
+            <td th:text="${user.getMessage()}"></td>
+            <td>
+                <span th:if="${user.isAdmin()}==true">Админ</span>
+                <span th:unless="${user.isAdmin()}==true">Потребител</span>
+            </td>
+            <td>
+                <button class="act opt" onclick="deleteUser(this)" th:name="${user.getId()}">
+                    <a class="no-dec">ИЗТРИВАНЕ</a>
+                </button>
+                <button class="act opt">
+                    <a class="no-dec" th:href="@{users/edit-user/{id}(id=${user.getId()})}" href="edit-user.html">РЕДАКТИРАНЕ</a>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<section th:insert="navigation.html :: footer"></section>
+</body>
+</html>

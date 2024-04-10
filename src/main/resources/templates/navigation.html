@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlushBurst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+          rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+          rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/icon" href="../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <script src="/static/js/logic.js" th:src="@{/js/logic.js}" defer></script>
+    <script src="/static/js/slider.js" th:src="@{/js/slider.js}" defer></script>
+
+</head>
+<body>
+<header class="sticky-header main-header" th:fragment="nav">
+    <nav class="navbar">
+        <h1>BlushBurst</h1>
+        <ul class="navbar-links">
+            <li>
+                <form id="search-form">
+                    <label>
+                        <input class="navbar-link" type="text" id="search-box" placeholder="Търсене...">
+                    </label>
+                    <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </li>
+            <li>
+                <a href="index.html" th:href="@{/}" class="navbar-link">Начало</a>
+            </li>
+            <li><a href="products.html" th:href="@{/product}" class="navbar-link">Продукти</a></li>
+            <li sec:authorize="hasAuthority('user')"><a href="about.html" th:href="@{/about}" class="navbar-link">За нас</a></li>
+            <li sec:authorize="hasAuthority('user')"><a href="contact.html" th:href="@{/contact}" class="navbar-link">Контакти</a></li>
+            <li sec:authorize="isAnonymous()"><a href="about.html" th:href="@{/about}" class="navbar-link">За нас</a></li>
+            <li sec:authorize="isAnonymous()"><a href="contact.html" th:href="@{/contact}" class="navbar-link">Контакти</a></li>
+            <li><a sec:authorize="hasAuthority('admin')" class="navbar-link" href="admin/users.html" th:href="@{/users}">Потребители</a></li>
+            <li><a sec:authorize="hasAuthority('admin')" class="navbar-link" href="admin/companies.html" th:href="@{/companies}">Компании</a></li>
+            <li><a sec:authorize="hasAuthority('admin')" class="navbar-link" href="admin/ingredients.html" th:href="@{/ingredients}">Съставки</a></li>
+        </ul>
+        <div class="navbar-links" sec:authorize="isAnonymous()">
+            <a class="link" href="form/login.html" th:href="@{/login}">ВХОД</a>
+        </div>
+        <div class="navbar-links" sec:authorize="isAuthenticated()">
+            <a class="link" sec:authentication="principal.username" th:href="@{/profile}" href="profile.html">Your username</a>
+            <a class="link" href="/logout"><i class="fa fa-sign-out"></i></a>
+        </div>
+    </nav>
+</header>
+<footer class="index-footer" th:fragment="footer">
+    <span>&copy; 2024 BlushBurst</span>
+</footer>
+</body>
+</html>

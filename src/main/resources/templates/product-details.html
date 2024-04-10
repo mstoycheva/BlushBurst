@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${product.getName()}">BlushBurst</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/icon" href="../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/login.css" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/table.css" th:href="@{/css/table.css}"/>
+    <script src="/static/js/slider.js" th:src="@{/js/slider.js}" defer></script>
+
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<div class="form product">
+    <div class="all">
+        <div class="input-box">
+            <h2 th:text="${product.getName()}">Product</h2>
+            <label>
+                <input th:placeholder="${product.getDescription()}" disabled>
+            </label>
+            <label>
+                <input th:placeholder="${product.getPrice()}" disabled>
+            </label>
+            <label th:each="company : ${companies}">
+                <input th:if="${company.getId()} == ${product.getCompany()}" th:placeholder="${company.getName()}" disabled>
+            </label>
+            <label th:each="productType : ${types}">
+                <input th:if="${productType.getId()} == ${product.getProductType()}" th:placeholder="${productType.getName()}" disabled>
+            </label>
+            <label th:each="season : ${seasons}">
+                <input th:if="${season.getId()} == ${product.getSeason()}" th:placeholder="${season.getSeasonName()}" disabled>
+            </label>
+            <label th:each="ingredient : ${ingredients}">
+                <input th:if="${ingredient.getId()} == ${product.getIngredient()}" th:placeholder="${ingredient.getIngredientName()}" disabled>
+            </label>
+        </div>
+    </div>
+</div>
+</body>
+</html>

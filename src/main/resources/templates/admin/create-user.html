@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new user</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+            rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/login.css" th:href="@{/css/login.css}"/>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<div class="container">
+    <form class="form" id="create-user" th:object="${user}" th:action="@{/users}" method = "post">
+        <h2>ДОБАВЯНЕ</h2>
+        <div class="input-small">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{username}" class="in" th:type="text" th:id="username" th:name="username"
+                       th:required="required" placeholder="Потребителско име">
+            </label>
+        </div>
+        <div class="input-small">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{firstName}" class="in" th:type="text" th:id="firstname" th:name="firstname"
+                       th:required="required" placeholder="Първо име">
+            </label>
+        </div>
+        <div class="input-small">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{lastName}" class="in" th:type="text" th:id="lastname" th:name="lastname"
+                       th:required="required" placeholder="Фамилия">
+            </label>
+        </div>
+        <div class="input-small">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{email}" class="in" th:type="email" th:id="email"  th:name="email"
+                       th:required="required" placeholder="Имейл">
+            </label>
+        </div>
+        <div class="input-small">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{password}" class="in" th:type="password" th:id="pass" th:name="pass"
+                       th:required="required" placeholder="Парола">
+            </label>
+        </div>
+        <div class="input-small">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <label>
+                <input th:field="*{message}" class="in" th:type="text" th:id="message" th:name="message"
+                       th:required="required" placeholder="Съобщение">
+            </label>
+        </div>
+        <div class="input-small">
+            <label>
+                <input th:field="*{admin}" class="in" th:type="text" th:id="admin" th:name="admin"
+                       th:required="required" placeholder="Админ">
+            </label>
+        </div>
+        <div class="button-group">
+            <button class="button-link" th:type="submit" type="submit"><b>ДОБАВЯНЕ</b></button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

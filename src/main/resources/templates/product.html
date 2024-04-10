@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+            rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link
+            rel="icon"
+            type="image/icon"
+            href="../static/images/logo_no_name.png"
+            th:href="@{/images/logo_no_name.png}"
+    >
+    <link
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+            href="../static/css/style.css"
+            th:href="@{/css/style.css}"
+    />
+
+    <link
+            rel="stylesheet"
+            type="text/css"
+            media="all"
+            href="../static/css/about.css"
+            th:href="@{/css/about.css}"
+    />
+    <script src="/static/js/logic.js" th:src="@{/js/logic.js}" defer></script>
+    <script type="text/javascript">
+        console.log("Hello from embedded");
+    </script>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+
+<section class="section-hero">
+    <ul class="product-titles">
+        <a class="title" href="products.html" th:href="@{products}">ВСИЧКИ</a>
+        <h1 class="question">-</h1>
+    </ul>
+    <div class="product-titles" th:each="type : ${types}">
+        <ul class="title">
+            <li>
+                <a th:href="@{/product-type-details/{id}(id=${type.getId()})}"
+                   th:text="${type.getName()}">
+                </a>
+            </li>
+        </ul>
+        <br>
+        <h1 class="question">-</h1>
+    </div>
+</section>
+
+<footer class="index-footer">
+    <span>&copy; 2024 BlushBurst</span>
+</footer>
+</body>
+</html>

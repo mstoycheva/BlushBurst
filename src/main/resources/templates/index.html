@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlushBurst</title>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../static/css/product.css" th:href="@{/css/product.css}"/>
+    <script src="/js/slider.js" th:src="@{/js/slider.js}" defer></script>
+    <script src="/js/logic.js" th:src="@{/js/logic.js}" defer></script>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/icon" href="../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+</head>
+<body>
+<main>
+    <div>
+        <section th:insert="~{navigation.html :: nav}"></section>
+        <section class="section-hero">
+                <div class="slider-wrap">
+                    <div id="product-slider">
+                        <ul class="catalog">
+                                <li class="catalog-item" th:each="season : ${seasons}">
+                                        <a  class="no-dec" th:href="@{/season-details/{id}(id=${season.getId()})}">
+                                            <div class="attributes">
+                                                <h4 class="title" th:text="${season.getSeasonName()}">Season Name</h4>
+                                            </div>
+                                        </a>
+                                </li>
+                        </ul>
+                    </div>
+                    <button class="slider-control slider-arrow-prev"><</button>
+                    <button class="slider-control slider-arrow-next">></button>
+                </div>
+        </section>
+    </div>
+</main>
+<section th:insert="~{navigation.html :: footer}"></section>
+</body>
+</html>

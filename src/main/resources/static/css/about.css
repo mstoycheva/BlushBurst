@@ -1,0 +1,75 @@
+body {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol, li {
+    list-style-type: none;
+    display: inline;
+    text-decoration: none;
+}
+.content-container {
+    overflow-y: auto;
+    max-height: 100vh;
+}
+.question{
+    background-color: #cccccc;
+    color: #cccccc;
+    letter-spacing: -5px;
+    margin-top: 10px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--navbar-end-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--navbar-end-color);
+}
+
+.index-footer{
+    background-color: #5b5b5b;
+}
+
+.social-media-links {
+    display: flex;
+}
+
+.social-link {
+    margin-right: 5px;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.social-link:link {
+    color: #111111;
+}
+
+.social-link:visited {
+    color: #402640;
+}
+
+.title {
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.product-titles {
+    margin-top: 20px;
+}
+.product-titles a{
+    text-decoration: none;
+    color: black;
+}
+
+.product-titles a:visited {
+    color: #3b1b3b;
+}

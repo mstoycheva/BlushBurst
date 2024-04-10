@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit ingredient</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+            rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/login.css" th:href="@{/css/login.css}"/>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<section class="content">
+    <form class="form" id="edit-company" th:object="${ingredient}" th:action="@{/ingredients/edit-ingredient}" method = "post">
+        <h2>РЕДАКТИРАНЕ</h2>
+        <div class="input-small">
+            <input th:field="*{id}" type="text" id="id" th:value="${ingredient.getId()}" disabled/>
+            <input th:field="*{id}" type="hidden" name="id" id="idHidden" th:value="${ingredient.getId()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{ingredientName}" type="text" name="name" id="name" th:value="${ingredient.getIngredientName()}"/>
+        </div>
+        <div class="button-group">
+            <button class="button-link" th:type="submit" type = "submit"><b>РЕДАКТИРАНЕ</b></button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

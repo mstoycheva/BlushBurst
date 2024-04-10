@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/login.css" th:href="@{/css/login.css}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+          rel="stylesheet"
+    />
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap}"
+          href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/icon" href="../../static/images/logo_no_name.png" th:href="@{/images/logo_no_name.png}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/product.css" th:href="@{/css/product.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/table.css" th:href="@{/css/table.css}"/>
+    <script src="/js/logic.js" th:src="@{/js/logic.js}" defer></script>
+    <script src="/js/slider.js" th:src="@{/js/slider.js}" defer></script>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<div class="container">
+    <section class="section-hero">
+        <div class="slider-wrap">
+            <div sec:authorize="hasAuthority('admin')" class="bg">
+                <button class="act opt"><a class="no-dec" th:href="@{products/create-product}" href="create-product.html">ДОБАВЯНЕ</a></button>
+            </div>
+            <div id="product-slider">
+                <ul class="catalog">
+                    <li class="catalog-item" th:each="product : ${products}">
+                        <div class="item-attributes">
+                            <h4 class="item-title" th:text="${product.getName()}">Примерен продук 1</h4>
+                            <div class="item-details">
+                                <p class="item-short-descr" th:text="${product.getDescription()}">
+                                    Кратко описание на продукта
+                                </p>
+                                <span class="item-price" th:text="${product.getPrice()}">80 лв.</span>
+                            </div>
+                            <div class="item-actions">
+                                <a class="item-action action-view" th:href="@{/product-details/{id}(id=${product.getId()})}">Виж повече</a>
+                            </div>
+                            <div>
+                                <div sec:authorize="hasAuthority('admin')" class="item-actions">
+                                    <a onclick="deleteProduct(this)" th:data-product-id="${product.getId()}" class="item-action action-view">ИЗТРИВАНЕ</a>
+                                    <a class="item-action action-view" th:href="@{/products/edit-product/{id}(id=${product.getId()})}" href="edit-product.html">РЕДАКТИРАНЕ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button class="slider-control slider-arrow-prev"><</button>
+            <button class="slider-control slider-arrow-next">></button>
+        </div>
+    </section>
+</div>
+<section th:insert="~{navigation.html :: footer}"></section>
+</body>
+</html>

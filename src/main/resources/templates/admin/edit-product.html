@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
+            rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/login.css" th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/table.css" th:href="@{/css/table.css}"/>
+</head>
+<body>
+<section th:insert="~{navigation.html :: nav}"></section>
+<section class="content">
+    <form class="form" id="edit-company" th:object="${product}" th:action="@{/products/edit-product}" method = "post">
+        <h2>РЕДАКТИРАНЕ</h2>
+        <div class="input-small">
+            <input th:field="*{id}" type="text" id="id" th:value="${product.getId()}" disabled/>
+            <input th:field="*{id}" type="hidden" name="id" id="idHidden" th:value="${product.getId()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{name}" type="text" name="name" id="name" th:value="${product.getName()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{description}" type="text" name="desc" id="desc" th:value="${product.getDescription()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{price}" type="text" name="price" id="price" th:value="${product.getPrice()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{company}" type="text" name="company" id="company" th:value="${product.getCompany()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{season}" type="text" name="season" id="season" th:value="${product.getSeason()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{productType}" type="text" name="type" id="type" th:value="${product.getProductType()}"/>
+        </div>
+        <div class="input-small">
+            <input th:field="*{ingredient}" type="text" name="ingredient" id="ingredient" th:value="${product.getIngredient()}"/>
+        </div>
+        <div class="button-group">
+            <button class="button-link" th:type="submit" type = "submit"><b>РЕДАКТИРАНЕ</b></button>
+        </div>
+    </form>
+</section>
+</body>
+</html>
