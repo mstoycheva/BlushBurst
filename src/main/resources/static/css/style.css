@@ -377,6 +377,7 @@ section.section-hero {
 }
 
 #search-form {
+  background-color: var(--primary-color);
   display: flex;
   justify-content: flex-end;
   align-items: center;

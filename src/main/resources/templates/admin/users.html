@@ -26,6 +26,12 @@
 <section th:insert="~{navigation.html :: nav}"></section>
 <div class="container">
     <h2>Регистрирани потребители</h2>
+    <h2><form id="search-form">
+        <label>
+            <input th:href="@{/users}" name="keyword" class="navbar-link" type="text" id="search-box" placeholder="Търсене...">
+        </label>
+        <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+    </form></h2>
     <button class="act opt center"><a class="no-dec" th:href="@{users/create-user}" href="create-user.html">ДОБАВЯНЕ</a></button>
     <table>
         <thead>

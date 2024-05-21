@@ -28,7 +28,6 @@
 <section th:insert="~{navigation.html :: nav}"></section>
 <section class="content">
     <form class="form">
-        <h2>ПРОФИЛ</h2>
         <div class="input-small">
             <input type="text" name="userid" id="userId" th:value="${user.getId()}" disabled/>
         </div>
@@ -54,5 +53,15 @@
         </div>
     </form>
 </section>
+<img src="/profile-picture" height="100"/>
+
+<form th:action="@{/profile-picture}" enctype="multipart/form-data" method="post">
+    <label>Picture</label>
+    <input type="file" name="image" accept="image/*" />
+
+    <br/>
+
+    <input type="submit" value="update"/>
+</form>
 </body>
 </html>

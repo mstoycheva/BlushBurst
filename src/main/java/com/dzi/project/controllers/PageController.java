@@ -48,4 +48,11 @@ public class PageController {
         model.addAttribute("products", productService.getProducts());
         return "product-type-details";
     }
+
+    @GetMapping(value = "/company-details/{id}")
+    public String companyView(@PathVariable int id,Model model) {
+        model.addAttribute("companies", companyService.getCompany(id));
+        model.addAttribute("products", productService.getProducts());
+        return "company-details";
+    }
 }
