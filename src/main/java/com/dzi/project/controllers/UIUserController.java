@@ -58,11 +58,21 @@ public class UIUserController {
         return new RedirectView("/users");
     }
     @GetMapping(value = "users")
-    public String usersView(Model model, @Param("firstName") String firstName){
-        List<User> users = userService.getUsersByFirst(firstName);
+    public String usersView(Model model){
+        List<User> users = userService.getUsers();
         model.addAttribute("users", users);
         return "admin/users";
     }
+
+    @GetMapping(value = "search")
+    public String getUsers(@RequestParam(required = false) String firstName,
+                           @RequestParam(required = false) String lastName,
+                           Model model) {
+        List<User> search = userService.getUsersByFirstNameOrLastName(firstName, lastName);
+        model.addAttribute("search", search);
+        return "admin/search";
+    }
+
     @GetMapping(value = "/profile")
     public String profile(Model model, Authentication authentication) {
         User currentUser = (User) authentication.getPrincipal();

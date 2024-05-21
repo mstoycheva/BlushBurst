@@ -7,10 +7,6 @@
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<!--    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap}"-->
-<!--          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700@100@200@300@300@400@500@600@800@900&display=swap"-->
-<!--          rel="stylesheet"-->
-<!--    />-->
     <link th:href="@{https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap}"
           href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Moirai+One&display=swap"
           rel="stylesheet"
@@ -25,12 +21,7 @@
 <body>
 <section th:insert="~{navigation.html :: nav}"></section>
 <div class="container">
-    <h2>Регистрирани потребители</h2>
-    <form  th:action="@{/search}" method="get">
-        <input type="text" id="firstName" name="firstName">
-        <button type="submit">Search</button>
-    </form>
-    <button class="act opt center"><a class="no-dec" th:href="@{users/create-user}" href="create-user.html">ДОБАВЯНЕ</a></button>
+    <h2>Търсен потребител</h2>
     <table>
         <thead>
         <tr>
@@ -44,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "user : ${users}">
+        <tr th:each = "user : ${search}">
             <td th:text="${user.getUsername()}"></td>
             <td th:text = "${user.getFirstName()}"></td>
             <td th:text = "${user.getLastName()}"></td>
@@ -65,9 +56,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="act opt">
-        <a class="no-dec" th:href="@{users}" >НАЗАД</a>
-    </button>
 </div>
+<section th:insert="navigation.html :: footer"></section>
 </body>
 </html>

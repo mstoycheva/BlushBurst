@@ -29,19 +29,27 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public List<User> getUsersByFirst(String firstName) {
-        if(firstName != null) {
+    public List<User> getUsersByFirstNameOrLastName(String firstName, String lastName) {
+        if (firstName != null && !firstName.isEmpty() && lastName != null && !lastName.isEmpty()) {
+            return userRepository.findByFirstNameOrLastName(firstName, lastName);
+        } else if (firstName != null && !firstName.isEmpty()) {
             return userRepository.findByFirstName(firstName);
+        } else if (lastName != null && !lastName.isEmpty()) {
+            return userRepository.findByLastName(lastName);
+        } else {
+            return List.of(); // Return an empty list if both parameters are null or empty
         }
-        return userRepository.findAll();
     }
+
     public User getUser(Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
+
     public boolean isUsernameAvailable(String username) {
         return userRepository.findByUsername(username) == null;
     }
+
     public void createUser(User user){
         userRepository.saveAndFlush(user);
     }
